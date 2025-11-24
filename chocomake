@@ -1,0 +1,15 @@
+default: all
+flags : [debug,release]
+
+name = ChocoMake
+
+app_flag: selector flags
+   debug: -debug
+   release: -o:speed
+
+path_selector: selector group
+   windows: build/windows
+   linux: build/linux
+
+[windows]
+build: odin build src {app_flag} -out:{path_selector}/{name}.exe
